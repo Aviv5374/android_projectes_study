@@ -12,8 +12,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void testingPush(){
-        int i = 1+1;
-        String gog = "lol";
+        int i = 1+2;
+        String gog = "GOG";
     }
 
 }
