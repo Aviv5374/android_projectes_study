@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void testingPush(){
         int i = 1+1;
+        String gog = "lol";
     }
 
 }
