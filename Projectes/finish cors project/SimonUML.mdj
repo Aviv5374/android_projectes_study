@@ -392,6 +392,7 @@
 										"$ref": "AAAAAAFeEz3RjNfQylw="
 									},
 									"name": "startGame",
+									"documentation": "gameSequenceOfButton.clear();\nplayerSequenceOfButton.clear();\nhightestSequence = 0;\n\n//count 3 seacnd with tosts?\n\n//addSequence",
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
