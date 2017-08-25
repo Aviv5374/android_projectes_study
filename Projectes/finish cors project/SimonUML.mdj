@@ -363,7 +363,7 @@
 										"$ref": "AAAAAAFeEz3RjNfQylw="
 									},
 									"name": "playButton",
-									"documentation": "// to remember\n// fix later\nmp.start();\n//bizi wating\nwhlie(mp != null && mp.getCurrentPosition() <  mp.getDuration()){};\nmp.stop();\n//alwys  after stop \nmp = MP.create(...);",
+									"documentation": "https://www.youtube.com/watch?v=whFVhvM-J0U\n\n// to remember\n// fix later\nmp.start();\n//bizi wating\nwhlie(mp != null && mp.getCurrentPosition() <  mp.getDuration()){};\nmp.stop();\n//alwys  after stop \nmp = MP.create(...);",
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
