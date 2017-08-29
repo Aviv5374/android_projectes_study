@@ -35,7 +35,7 @@
 										"$ref": "AAAAAAFeEz3RjNfQylw="
 									},
 									"name": "buttons",
-									"visibility": "public",
+									"visibility": "private",
 									"isStatic": false,
 									"isLeaf": false,
 									"type": "Button",
@@ -54,25 +54,7 @@
 										"$ref": "AAAAAAFeEz3RjNfQylw="
 									},
 									"name": "gameSequenceOfButton",
-									"visibility": "public",
-									"isStatic": false,
-									"isLeaf": false,
-									"type": "list<button>",
-									"isReadOnly": false,
-									"isOrdered": false,
-									"isUnique": false,
-									"isDerived": false,
-									"aggregation": "none",
-									"isID": false
-								},
-								{
-									"_type": "UMLAttribute",
-									"_id": "AAAAAAFeE9MAntsY4pk=",
-									"_parent": {
-										"$ref": "AAAAAAFeEz3RjNfQylw="
-									},
-									"name": "playerSequenceOfButton",
-									"visibility": "public",
+									"visibility": "private",
 									"isStatic": false,
 									"isLeaf": false,
 									"type": "list<button>",
@@ -89,14 +71,34 @@
 									"_parent": {
 										"$ref": "AAAAAAFeEz3RjNfQylw="
 									},
-									"name": "hightestSequence",
-									"visibility": "public",
+									"name": "indexOfReleventSequenceButon",
+									"visibility": "private",
 									"isStatic": false,
 									"isLeaf": false,
 									"type": "int",
 									"isReadOnly": false,
 									"isOrdered": false,
 									"isUnique": false,
+									"defaultValue": "0",
+									"isDerived": false,
+									"aggregation": "none",
+									"isID": false
+								},
+								{
+									"_type": "UMLAttribute",
+									"_id": "AAAAAAFeLgzo7gpz43E=",
+									"_parent": {
+										"$ref": "AAAAAAFeEz3RjNfQylw="
+									},
+									"name": "isGameRuning",
+									"visibility": "private",
+									"isStatic": false,
+									"isLeaf": false,
+									"type": "boolean",
+									"isReadOnly": false,
+									"isOrdered": false,
+									"isUnique": false,
+									"defaultValue": "false",
 									"isDerived": false,
 									"aggregation": "none",
 									"isID": false
@@ -248,36 +250,21 @@
 								},
 								{
 									"_type": "UMLOperation",
-									"_id": "AAAAAAFeE+zDOdssAlo=",
+									"_id": "AAAAAAFeFAv17dtWBZ0=",
 									"_parent": {
 										"$ref": "AAAAAAFeEz3RjNfQylw="
 									},
-									"name": "click",
-									"visibility": "public",
+									"name": "startGame",
+									"documentation": "gameSequenceOfButton.clear();\nplayerSequenceOfButton.clear();\nhightestSequence = 0;\n\n//count 3 seacnd with tosts?\n\n//addSequence",
+									"visibility": "private",
 									"isStatic": false,
 									"isLeaf": false,
 									"parameters": [
 										{
 											"_type": "UMLParameter",
-											"_id": "AAAAAAFeE+0qadszo4U=",
+											"_id": "AAAAAAFeFAxdJNtdby0=",
 											"_parent": {
-												"$ref": "AAAAAAFeE+zDOdssAlo="
-											},
-											"name": "view v",
-											"visibility": "public",
-											"isStatic": false,
-											"isLeaf": false,
-											"type": "",
-											"isReadOnly": false,
-											"isOrdered": false,
-											"isUnique": false,
-											"direction": "in"
-										},
-										{
-											"_type": "UMLParameter",
-											"_id": "AAAAAAFeE+0qats0Hg4=",
-											"_parent": {
-												"$ref": "AAAAAAFeE+zDOdssAlo="
+												"$ref": "AAAAAAFeFAv17dtWBZ0="
 											},
 											"visibility": "public",
 											"isStatic": false,
@@ -300,7 +287,7 @@
 										"$ref": "AAAAAAFeEz3RjNfQylw="
 									},
 									"name": "addToSequencen",
-									"visibility": "public",
+									"visibility": "private",
 									"isStatic": false,
 									"isLeaf": false,
 									"parameters": [
@@ -358,21 +345,36 @@
 								},
 								{
 									"_type": "UMLOperation",
-									"_id": "AAAAAAFeE/Agp9tDkDk=",
+									"_id": "AAAAAAFeE+zDOdssAlo=",
 									"_parent": {
 										"$ref": "AAAAAAFeEz3RjNfQylw="
 									},
-									"name": "playButton",
-									"documentation": "https://www.youtube.com/watch?v=whFVhvM-J0U\n\n// to remember\n// fix later\nmp.start();\n//bizi wating\nwhlie(mp != null && mp.getCurrentPosition() <  mp.getDuration()){};\nmp.stop();\n//alwys  after stop \nmp = MP.create(...);",
+									"name": "onButtonClick",
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
 									"parameters": [
 										{
 											"_type": "UMLParameter",
-											"_id": "AAAAAAFeE/CoedtK4tU=",
+											"_id": "AAAAAAFeE+0qadszo4U=",
 											"_parent": {
-												"$ref": "AAAAAAFeE/Agp9tDkDk="
+												"$ref": "AAAAAAFeE+zDOdssAlo="
+											},
+											"name": "view v",
+											"visibility": "public",
+											"isStatic": false,
+											"isLeaf": false,
+											"type": "",
+											"isReadOnly": false,
+											"isOrdered": false,
+											"isUnique": false,
+											"direction": "in"
+										},
+										{
+											"_type": "UMLParameter",
+											"_id": "AAAAAAFeE+0qats0Hg4=",
+											"_parent": {
+												"$ref": "AAAAAAFeE+zDOdssAlo="
 											},
 											"visibility": "public",
 											"isStatic": false,
@@ -390,21 +392,21 @@
 								},
 								{
 									"_type": "UMLOperation",
-									"_id": "AAAAAAFeFAv17dtWBZ0=",
+									"_id": "AAAAAAFeE/Agp9tDkDk=",
 									"_parent": {
 										"$ref": "AAAAAAFeEz3RjNfQylw="
 									},
-									"name": "startGame",
-									"documentation": "gameSequenceOfButton.clear();\nplayerSequenceOfButton.clear();\nhightestSequence = 0;\n\n//count 3 seacnd with tosts?\n\n//addSequence",
+									"name": "playButton",
+									"documentation": "https://www.youtube.com/watch?v=whFVhvM-J0U\n\n// to remember\n// fix later\nmp.start();\n//bizi wating\nwhlie(mp != null && mp.getCurrentPosition() <  mp.getDuration()){};\nmp.stop();\n//alwys  after stop \nmp = MP.create(...);",
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
 									"parameters": [
 										{
 											"_type": "UMLParameter",
-											"_id": "AAAAAAFeFAxdJNtdby0=",
+											"_id": "AAAAAAFeE/CoedtK4tU=",
 											"_parent": {
-												"$ref": "AAAAAAFeFAv17dtWBZ0="
+												"$ref": "AAAAAAFeE/Agp9tDkDk="
 											},
 											"visibility": "public",
 											"isStatic": false,
@@ -1719,7 +1721,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+buttons: Button[4]",
+											"text": "-buttons: Button[4]",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -1748,36 +1750,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+gameSequenceOfButton: list<button>",
-											"horizontalAlignment": 0,
-											"verticalAlignment": 5,
-											"wordWrap": false
-										},
-										{
-											"_type": "UMLAttributeView",
-											"_id": "AAAAAAFeE9MAv9sbPHE=",
-											"_parent": {
-												"$ref": "AAAAAAFeEz3RjdfYTLY="
-											},
-											"model": {
-												"$ref": "AAAAAAFeE9MAntsY4pk="
-											},
-											"visible": true,
-											"enabled": true,
-											"lineColor": "#000000",
-											"fillColor": "#ffffff",
-											"fontColor": "#000000",
-											"font": "Arial;13;0",
-											"showShadow": true,
-											"containerChangeable": false,
-											"containerExtending": false,
-											"left": 237,
-											"top": 276,
-											"width": 290.849609375,
-											"height": 13,
-											"autoResize": false,
-											"underline": false,
-											"text": "+playerSequenceOfButton: list<button>",
+											"text": "-gameSequenceOfButton: list<button>",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -1801,12 +1774,41 @@
 											"containerChangeable": false,
 											"containerExtending": false,
 											"left": 237,
+											"top": 276,
+											"width": 290.849609375,
+											"height": 13,
+											"autoResize": false,
+											"underline": false,
+											"text": "-indexOfReleventSequenceButon: int = 0",
+											"horizontalAlignment": 0,
+											"verticalAlignment": 5,
+											"wordWrap": false
+										},
+										{
+											"_type": "UMLAttributeView",
+											"_id": "AAAAAAFeLgzpLgp2owc=",
+											"_parent": {
+												"$ref": "AAAAAAFeEz3RjdfYTLY="
+											},
+											"model": {
+												"$ref": "AAAAAAFeLgzo7gpz43E="
+											},
+											"visible": true,
+											"enabled": true,
+											"lineColor": "#000000",
+											"fillColor": "#ffffff",
+											"fontColor": "#000000",
+											"font": "Arial;13;0",
+											"showShadow": true,
+											"containerChangeable": false,
+											"containerExtending": false,
+											"left": 237,
 											"top": 291,
 											"width": 290.849609375,
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+hightestSequence: int",
+											"text": "-isGameRuning: boolean = false",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -1926,12 +1928,12 @@
 										},
 										{
 											"_type": "UMLOperationView",
-											"_id": "AAAAAAFeE+zDX9svUDk=",
+											"_id": "AAAAAAFeFAv2EttZ4mY=",
 											"_parent": {
 												"$ref": "AAAAAAFeEz3RjdfZxZw="
 											},
 											"model": {
-												"$ref": "AAAAAAFeE+zDOdssAlo="
+												"$ref": "AAAAAAFeFAv17dtWBZ0="
 											},
 											"visible": true,
 											"enabled": true,
@@ -1948,7 +1950,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+click(view v): void",
+											"text": "-startGame(): void",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -1977,7 +1979,36 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+addToSequencen(Button b, string name): void",
+											"text": "-addToSequencen(Button b, string name): void",
+											"horizontalAlignment": 0,
+											"verticalAlignment": 5,
+											"wordWrap": false
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAFeE+zDX9svUDk=",
+											"_parent": {
+												"$ref": "AAAAAAFeEz3RjdfZxZw="
+											},
+											"model": {
+												"$ref": "AAAAAAFeE+zDOdssAlo="
+											},
+											"visible": true,
+											"enabled": true,
+											"lineColor": "#000000",
+											"fillColor": "#ffffff",
+											"fontColor": "#000000",
+											"font": "Arial;13;0",
+											"showShadow": true,
+											"containerChangeable": false,
+											"containerExtending": false,
+											"left": 237,
+											"top": 389,
+											"width": 290.849609375,
+											"height": 13,
+											"autoResize": false,
+											"underline": false,
+											"text": "+onButtonClick(view v): void",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -2001,41 +2032,12 @@
 											"containerChangeable": false,
 											"containerExtending": false,
 											"left": 237,
-											"top": 389,
-											"width": 290.849609375,
-											"height": 13,
-											"autoResize": false,
-											"underline": false,
-											"text": "+playButton(): void",
-											"horizontalAlignment": 0,
-											"verticalAlignment": 5,
-											"wordWrap": false
-										},
-										{
-											"_type": "UMLOperationView",
-											"_id": "AAAAAAFeFAv2EttZ4mY=",
-											"_parent": {
-												"$ref": "AAAAAAFeEz3RjdfZxZw="
-											},
-											"model": {
-												"$ref": "AAAAAAFeFAv17dtWBZ0="
-											},
-											"visible": true,
-											"enabled": true,
-											"lineColor": "#000000",
-											"fillColor": "#ffffff",
-											"fontColor": "#000000",
-											"font": "Arial;13;0",
-											"showShadow": true,
-											"containerChangeable": false,
-											"containerExtending": false,
-											"left": 237,
 											"top": 404,
 											"width": 290.849609375,
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+startGame(): void",
+											"text": "+playButton(): void",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
