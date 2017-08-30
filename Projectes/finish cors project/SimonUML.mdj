@@ -53,7 +53,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFeEz3RjNfQylw="
 									},
-									"name": "gameSequenceOfButton",
+									"name": "buttonsSequence",
 									"visibility": "private",
 									"isStatic": false,
 									"isLeaf": false,
@@ -112,6 +112,7 @@
 										"$ref": "AAAAAAFeEz3RjNfQylw="
 									},
 									"name": "onCreat",
+									"documentation": "//x4\nbuttons[i] = R.id.buttonName\n\nbuttonsSequence = new list()<button>",
 									"visibility": "protected",
 									"isStatic": false,
 									"isLeaf": false,
@@ -255,7 +256,7 @@
 										"$ref": "AAAAAAFeEz3RjNfQylw="
 									},
 									"name": "startGame",
-									"documentation": "gameSequenceOfButton.clear();\nplayerSequenceOfButton.clear();\nhightestSequence = 0;\n\n//count 3 seacnd with tosts?\n\n//addSequence",
+									"documentation": "int counter = 0;\nif(!isGameRuning){\nbuttonsSequence.clear();\n//count 3 seacnd with tosts?\nnew CountDownTimer(1000, 30)//?\n{\npublic void onTick(long millisUntilFinished){\nTost tost = Toast.makeText(this,String.valueOf(counter),Toast.LENGTH_SHORT);\ntoast.show():\ncounter ++;\n}\n}.start();\nisGameRuning = true;\n//gameLifeCycel\n{\nelse{\nTost tost = Toast.makeText(this,\"A game is runing right now. Please try againe later.\",Toast.LENGTH_SHORT);\ntoast.show():\n}",
 									"visibility": "private",
 									"isStatic": false,
 									"isLeaf": false,
@@ -398,7 +399,7 @@
 									},
 									"name": "playButton",
 									"documentation": "https://www.youtube.com/watch?v=whFVhvM-J0U\n\n// to remember\n// fix later\nmp.start();\n//bizi wating\nwhlie(mp != null && mp.getCurrentPosition() <  mp.getDuration()){};\nmp.stop();\n//alwys  after stop \nmp = MP.create(...);",
-									"visibility": "public",
+									"visibility": "private",
 									"isStatic": false,
 									"isLeaf": false,
 									"parameters": [
@@ -429,7 +430,7 @@
 										"$ref": "AAAAAAFeEz3RjNfQylw="
 									},
 									"name": "endGame",
-									"visibility": "public",
+									"visibility": "private",
 									"isStatic": false,
 									"isLeaf": false,
 									"parameters": [
@@ -1750,7 +1751,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "-gameSequenceOfButton: list<button>",
+											"text": "-buttonsSequence: list<button>",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -2037,7 +2038,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+playButton(): void",
+											"text": "-playButton(): void",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -2066,7 +2067,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+endGame(): void",
+											"text": "-endGame(): void",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
