@@ -256,7 +256,7 @@
 										"$ref": "AAAAAAFeEz3RjNfQylw="
 									},
 									"name": "startGame",
-									"documentation": "int counter = 0;\nif(!isGameRuning){\nbuttonsSequence.clear();\nchagnButtonsClickableState(in boolean state =false): void\n//count 3 seacnd with tosts?\nnew CountDownTimer(1000, 30)//?\n{\npublic void onTick(long millisUntilFinished){\nTost tost = Toast.makeText(this,String.valueOf(counter),Toast.LENGTH_SHORT);\ntoast.show():\ncounter ++;\n}\n}.start();\nisGameRuning = true;\n//gameLifeCycel\n{\nelse{\nTost tost = Toast.makeText(this,\"A game is runing right now. Please try againe later.\",Toast.LENGTH_SHORT);\ntoast.show():\n}",
+									"documentation": "int counter = 0;\nif(!isGameRuning){\nbuttonsSequence.clear();\nindexOfReleventSequenceButon = 0;\nchagnButtonsClickableState(in boolean state =false): void\n//count 3 seacnd with tosts?\nnew CountDownTimer(1000, 30)//?\n{\npublic void onTick(long millisUntilFinished){\nTost tost = Toast.makeText(this,String.valueOf(counter),Toast.LENGTH_SHORT);\ntoast.show():\ncounter ++;\n}\n}.start();\nisGameRuning = true;\nmanageButtonsSequence(): void\n{\nelse{\nTost tost = Toast.makeText(this,\"A game is runing right now. Please try againe later.\",Toast.LENGTH_SHORT);\ntoast.show():\n}",
 									"visibility": "private",
 									"isStatic": false,
 									"isLeaf": false,
@@ -288,7 +288,7 @@
 										"$ref": "AAAAAAFeEz3RjNfQylw="
 									},
 									"name": "manageButtonsSequence",
-									"documentation": "chagnButtonsClickableState(in boolean state =false): void\naddToSequencen(): void\nplaySequence(): void\nchagnButtonsClickableState(in boolean state =true): void",
+									"documentation": "chagnButtonsClickableState(in boolean state =false): void//TO CHECK: maybe not relevent\naddToSequencen(): void\nplaySequence(): void\nchagnButtonsClickableState(in boolean state =true): void",
 									"visibility": "private",
 									"isStatic": false,
 									"isLeaf": false,
@@ -432,7 +432,7 @@
 										"$ref": "AAAAAAFeEz3RjNfQylw="
 									},
 									"name": "onButtonClick",
-									"documentation": "Button relventButton = (Button) v...;\nchagnButtonsClickableState(in boolean state =false): void//?\nplayButton(relventButton): void\nif(comperButtons(relventButton): boolean){\n\n}\nelse{\nendGame(): void\n}\n\n\nchagnButtonsClickableState(in boolean state =true): void//?",
+									"documentation": "Button relventButton = (Button) v...;\nchagnButtonsClickableState(in boolean state =false): void//?\nplayButton(relventButton): void\nif(isGameRuning && comperButtons(relventButton): boolean){\nprepareTheNextTry(): void\n}\nelse{\nendGame(): void\n}\nchagnButtonsClickableState(in boolean state =true): void//?",
 									"visibility": "public",
 									"isStatic": false,
 									"isLeaf": false,
@@ -480,7 +480,7 @@
 										"$ref": "AAAAAAFeEz3RjNfQylw="
 									},
 									"name": "playButton",
-									"documentation": "https://www.youtube.com/watch?v=whFVhvM-J0U\ncode:\nMediaPlayer mp;\nswich b{\ncase red:\nmp = MediaPlayer.create(this, R.raw.redSong);\nbraek;\ncase blue ...\n\nmp.start();\n//busy wating\nwhlie(mp != null && mp.getCurrentPosition() <  mp.getDuration()){};\nmp.stop();\n//alwys  after stop \nmp = MP.create(...);",
+									"documentation": "https://www.youtube.com/watch?v=whFVhvM-J0U\ncode:\nMediaPlayer mp;\nint idOfReleventButtonOriginalColor;\nint idOfReleventButtonLighterColor;\nswich b{\ncase red:\nidOfReleventButtonOriginalColor = red;\nidOfReleventButtonLighterColor = lighterRed\nmp = MediaPlayer.create(this, R.raw.redSong);\nbraek;\ncase blue ...\n\nmp.start();\nb.setColor(idOfReleventButtonLighterColor);\n//busy wating\nwhlie(mp != null && mp.getCurrentPosition() <  mp.getDuration()){};\nmp.stop();\n//alwys  after stop \nmp = MP.create(...);\nb.setColor(idOfReleventButtonOriginalColor);",
 									"visibility": "private",
 									"isStatic": false,
 									"isLeaf": false,
@@ -576,7 +576,7 @@
 										"$ref": "AAAAAAFeEz3RjNfQylw="
 									},
 									"name": "prepareTheNextTry",
-									"documentation": "indexOfReleventSequenceButon++\nif(indexOfReleventSequenceButon >= buttonsSequence.count ){\nif(buttonsSequence.count < 16){\nindexOfReleventSequenceButon = 0;\nmanageButtonsSequence(): void\n}\nelse{\nendGame(): void\n}\n}",
+									"documentation": "indexOfReleventSequenceButon++\nif(indexOfReleventSequenceButon >= buttonsSequence.count ){\nif(buttonsSequence.count < 16){\nindexOfReleventSequenceButon = 0;\nmanageButtonsSequence(): void\n}\nelse{\nendGame(): void\n}\n}\n//?\nelse{\nchagnButtonsClickableState(in boolean state =true): void\n}",
 									"visibility": "private",
 									"isStatic": false,
 									"isLeaf": false,
@@ -608,7 +608,7 @@
 										"$ref": "AAAAAAFeEz3RjNfQylw="
 									},
 									"name": "endGame",
-									"documentation": "Tost tost = Toast.makeText(this,String.valueOf(buttonsSequence.count),Toast.LENGTH_SHORT);\ntoast.show():\nchagnButtonsClickableState(in boolean state =true): void",
+									"documentation": "Tost tost = Toast.makeText(this,String.valueOf(buttonsSequence.count),Toast.LENGTH_SHORT);\ntoast.show();\nisGameRuning = false;\nchagnButtonsClickableState(in boolean state =true): void",
 									"visibility": "private",
 									"isStatic": false,
 									"isLeaf": false,
