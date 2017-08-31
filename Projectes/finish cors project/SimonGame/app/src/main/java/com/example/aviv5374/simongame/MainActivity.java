@@ -1,5 +1,6 @@
 package com.example.aviv5374.simongame;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -8,12 +9,25 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
+
+    private Button[] buttons = new Button[4];
+    private ArrayList<Button> buttonsSequence = new ArrayList<Button>();
+    private int indexOfReleventSequenceButton = 0;
+    private boolean isGameRuning = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        buttons[0] = (Button)findViewById(R.id.redButton);
+        buttons[1] = (Button)findViewById(R.id.blueButton);
+        buttons[2] = (Button)findViewById(R.id.greenButton);
+        buttons[3] = (Button)findViewById(R.id.yellowButton);
+        buttons[0].setBackground(R.drawable.red);//?
     }
 
     @Override
@@ -26,23 +40,38 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        /*
-        switch(item.getItemId()){
-       case R.id.newtGame:
-       startGame();
-      return true;
-       default:
-         */
-        return super.onOptionsItemSelected(item);
+        switch(item.getItemId()) {
+            case R.id.startanewgameop:
+                startGame();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     private void startGame(){
         /*
-        switch(item.getItemId()){
-case R.id.newtGame:
-startGame();
-return true;
-default:
+       int counter = 0;
+if(!isGameRuning){
+buttonsSequence.clear();
+indexOfReleventSequenceButon = 0;
+chagnButtonsClickableState(in boolean state =false): void
+//count 3 seacnd with tosts?
+new CountDownTimer(1000, 30)//?
+{
+public void onTick(long millisUntilFinished){
+Tost tost = Toast.makeText(this,String.valueOf(counter),Toast.LENGTH_SHORT);
+toast.show():
+counter ++;
+}
+}.start();
+isGameRuning = true;
+manageButtonsSequence(): void
+{
+else{
+Tost tost = Toast.makeText(this,"A game is runing right now. Please try againe later.",Toast.LENGTH_SHORT);
+toast.show():
+}
          */
     }
 

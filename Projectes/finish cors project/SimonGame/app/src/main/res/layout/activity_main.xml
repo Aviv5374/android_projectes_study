@@ -28,7 +28,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@android:color/holo_red_dark" />
+                android:background="@drawable/red" />
 
             <Button
                 android:id="@+id/blueButton"
@@ -57,7 +57,7 @@
                 android:id="@+id/yellowButton"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="#FFFF00"
+                android:background="@color/Yellow"
                 android:layout_weight="1" />
         </LinearLayout>
     </LinearLayout>
