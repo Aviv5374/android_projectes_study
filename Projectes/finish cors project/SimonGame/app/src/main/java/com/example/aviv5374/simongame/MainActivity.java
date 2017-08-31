@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
@@ -84,7 +85,7 @@ playButton(Button b=buttonsSequence[i]): void
      */
 }
 
-public void onButtonClick(view v){
+public void onButtonClick(View v){
     /*
     Button relventButton = (Button) v...;
 chagnButtonsClickableState(in boolean state =false): void//?
