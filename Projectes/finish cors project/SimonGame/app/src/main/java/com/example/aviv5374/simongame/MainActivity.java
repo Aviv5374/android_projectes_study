@@ -9,6 +9,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -85,7 +86,7 @@ chagnButtonsClickableState(in boolean state =true): void
     }
 
     private void chagnButtonsClickableState(boolean state) {
-        for (int i = 0; i < buttons.Count; i++)
+        for (int i = 0; i < buttons.length; i++)
             buttons[i].setClickable(state);
     }
 
@@ -112,11 +113,11 @@ playButton(Button b=buttonsSequence[i]): void
 
     public void onButtonClick(View v) {
 
-        Button relventButton = (Button) v...;
+        Button relevantButton = (Button)findViewById(v.getId());
 //chagnButtonsClickableState(in boolean state =false): void//?
-        playButton(relventButton);
+        playButton(relevantButton);
 /*
-if(isGameRuning && comperButtons(relventButton): boolean){
+if(isGameRuning && comperButtons(relevantButton): boolean){
 prepareTheNextTry(): void
 }
 else{
@@ -153,12 +154,16 @@ endGame(): void
                 idOfRelevantButtonLighterColor = R.drawable.lightyellow;
                 mp = MediaPlayer.create(this, R.raw.yellowbutton);
                 break;
+            default:
+                Toast toast = Toast.makeText(this,"the button I get is wrong. Please try again.",Toast.LENGTH_SHORT);
+                toast.show();
+                return;
         }
         //buttons[0].setBackgroundResource(R.drawable.lightred);//this ok!
         mp.start();
         button.setBackgroundResource(idOfRelevantButtonLighterColor);
 //busy waiting
-        whlie(mp != null && mp.getCurrentPosition() < mp.getDuration());
+        while(mp != null && mp.getCurrentPosition() < mp.getDuration());
         mp.stop();
         button.setBackgroundResource(idOfRelevantButtonOriginalColor);
 
