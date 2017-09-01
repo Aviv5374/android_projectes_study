@@ -28,14 +28,14 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/red" />
+                android:background="@drawable/red3" />
 
             <Button
                 android:id="@+id/blueButton"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@android:color/holo_blue_dark" />
+                android:background="@drawable/blue" />
         </LinearLayout>
 
         <LinearLayout
@@ -51,14 +51,14 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@android:color/holo_green_dark" />
+                android:background="@drawable/green" />
 
             <Button
                 android:id="@+id/yellowButton"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:background="@color/Yellow"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:background="@drawable/yellow" />
         </LinearLayout>
     </LinearLayout>
 
