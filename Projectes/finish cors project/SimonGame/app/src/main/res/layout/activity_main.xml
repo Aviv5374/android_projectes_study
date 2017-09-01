@@ -28,14 +28,16 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/red3" />
+                android:background="@drawable/red3"
+                android:onClick="onButtonClick" />
 
             <Button
                 android:id="@+id/blueButton"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/blue" />
+                android:background="@drawable/blue"
+                android:onClick="onButtonClick" />
         </LinearLayout>
 
         <LinearLayout
@@ -51,14 +53,16 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/green" />
+                android:background="@drawable/green"
+                android:onClick="onButtonClick" />
 
             <Button
                 android:id="@+id/yellowButton"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/yellow" />
+                android:background="@drawable/yellow"
+                android:onClick="onButtonClick" />
         </LinearLayout>
     </LinearLayout>
 

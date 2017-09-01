@@ -112,8 +112,8 @@ playButton(Button b=buttonsSequence[i]): void
     }
 
     public void onButtonClick(View v) {
-
         Button relevantButton = (Button)findViewById(v.getId());
+        relevantButton.setBackgroundResource(R.drawable.lightred);//for testing.delete later
 //chagnButtonsClickableState(in boolean state =false): void//?
         playButton(relevantButton);
 /*
@@ -160,12 +160,13 @@ endGame(): void
                 return;
         }
         //buttons[0].setBackgroundResource(R.drawable.lightred);//this ok!
+        button.setBackgroundResource(R.drawable.lightred);
+        mp.setVolume(1.0f,1.0f);
         mp.start();
-        button.setBackgroundResource(idOfRelevantButtonLighterColor);
 //busy waiting
         while(mp != null && mp.getCurrentPosition() < mp.getDuration());
         mp.stop();
-        button.setBackgroundResource(idOfRelevantButtonOriginalColor);
+        button.setBackgroundResource(R.drawable.red3);
 
     }
 
