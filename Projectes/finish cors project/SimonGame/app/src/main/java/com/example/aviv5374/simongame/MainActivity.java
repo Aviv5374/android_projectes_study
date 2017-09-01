@@ -16,8 +16,8 @@ public class MainActivity extends AppCompatActivity {
 
     private Button[] buttons = new Button[4];
     private ArrayList<Button> buttonsSequence = new ArrayList<Button>();
-    private int indexOfReleventSequenceButton = 0;
-    private boolean isGameRuning = false;
+    private int indexOfRelevantSequenceButton = 0;
+    private boolean isGameRunמing = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
-            case R.id.startanewgameop:
+            case R.id.start_anew_game_op:
                 startGame();
                 return true;
             default:

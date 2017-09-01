@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-<item android:id="@+id/startanewgameop"
-       android:title="Start A New Game"></item>
+    <item
+        android:id="@+id/start_anew_game_op"
+        android:title="@string/start_game_text"></item>
 </menu>
