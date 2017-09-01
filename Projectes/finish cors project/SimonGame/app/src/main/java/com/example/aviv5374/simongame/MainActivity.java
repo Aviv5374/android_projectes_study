@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.start_anew_game_op:
-                //startGame();
+                startGame();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startGame() {
+        buttons[0].setBackgroundResource(R.drawable.lightred);
         /*
        int counter = 0;
 if(!isGameRuning){
@@ -113,7 +114,9 @@ playButton(Button b=buttonsSequence[i]): void
 
     public void onButtonClick(View v) {
         Button relevantButton = (Button)findViewById(v.getId());
-        relevantButton.setBackgroundResource(R.drawable.lightred);//for testing.delete later
+        //int testId = R.drawable.lightred;
+        relevantButton.setBackgroundResource(R.drawable.blue);//not working
+       // relevantButton.setBackgroundResource(testId);//working
 //chagnButtonsClickableState(in boolean state =false): void//?
         playButton(relevantButton);
 /*
@@ -159,14 +162,13 @@ endGame(): void
                 toast.show();
                 return;
         }
-        //buttons[0].setBackgroundResource(R.drawable.lightred);//this ok!
-        button.setBackgroundResource(R.drawable.lightred);
+        button.setBackgroundResource(idOfRelevantButtonOriginalColor);
         mp.setVolume(1.0f,1.0f);
         mp.start();
 //busy waiting
         while(mp != null && mp.getCurrentPosition() < mp.getDuration());
         mp.stop();
-        button.setBackgroundResource(R.drawable.red3);
+        button.setBackgroundResource(idOfRelevantButtonLighterColor);
 
     }
 
@@ -204,6 +206,10 @@ isGameRuning = false;
 chagnButtonsClickableState(in boolean state =true): void
      */
     }
+
+
+
+
 
 
 }
