@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         buttons[1] = (Button)findViewById(R.id.blueButton);
         buttons[2] = (Button)findViewById(R.id.greenButton);
         buttons[3] = (Button)findViewById(R.id.yellowButton);
-        buttons[0].setBackground(R.drawable.red);//?
+        buttons[0].setBackgroundResource(R.drawable.lightred);//this ok!
     }
 
     @Override
