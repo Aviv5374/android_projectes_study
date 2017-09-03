@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Button> buttonsSequence = new ArrayList<Button>();
     private int indexOfRelevantSequenceButton = 0;
     private boolean isGameRunמing = false;
+    private boolean isClickable = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,20 +46,22 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.start_anew_game_op:
-                //startGame();
+                startGame();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
+
     private void startGame() {
-        /*
-        buttons[1].setPressed(true);
-        playButton(buttons[0].getId());
-        buttons[1].setPressed(false);// same problem before the selectors
-        buttons[1].performClick();//tiger without the selector. what i search for without what i need
-        */
+        GameManager.getInstance().Test(buttons[1], true);
+        //buttons[1].setPressed(true);
+        playButton(buttons[1].getId());
+       // GameManager.getInstance().Test(buttons[1], false);
+        //buttons[1].setPressed(false);// same problem before the selectors
+        //buttons[1].performClick();//tiger without the selector. what i search for without what i need
+
         /*
        int counter = 0;
 if(!isGameRuning){
@@ -96,6 +99,7 @@ chagnButtonsClickableState(in boolean state =true): void
     private void chagnButtonsClickableState(boolean state) {
         for (int i = 0; i < buttons.length; i++)
             buttons[i].setClickable(state);
+        isClickable = state;
     }
 
     private void addToSequencen() {
@@ -131,7 +135,7 @@ else{
 endGame(): void
 }
 */
-       chagnButtonsClickableState(true);//?
+       //chagnButtonsClickableState(true);//?
 
     }
 
