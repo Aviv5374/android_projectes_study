@@ -1,7 +1,9 @@
 package com.example.aviv5374.simongame;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -43,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.start_anew_game_op:
-                startGame();
+                //startGame();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -51,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startGame() {
-        buttons[0].setBackgroundResource(R.drawable.lightred);
+        //buttons[0].
         /*
        int counter = 0;
 if(!isGameRuning){
@@ -114,11 +116,35 @@ playButton(Button b=buttonsSequence[i]): void
 
     public void onButtonClick(View v) {
         Button relevantButton = (Button)findViewById(v.getId());
-        //int testId = R.drawable.lightred;
-        relevantButton.setBackgroundResource(R.drawable.blue);//not working
-       // relevantButton.setBackgroundResource(testId);//working
+       /* int idOfRelevantButtonOriginalColor = 0;
+        int idOfRelevantButtonLighterColor = 0;
+        switch (relevantButton.getId()) {
+            case R.id.redButton:
+                idOfRelevantButtonOriginalColor = R.drawable.red3;
+                idOfRelevantButtonLighterColor = R.drawable.lightred;
+                break;
+            case R.id.blueButton:
+                idOfRelevantButtonOriginalColor = R.drawable.blue;
+                idOfRelevantButtonLighterColor = R.drawable.lightblue;
+                break;
+            case R.id.greenButton:
+                idOfRelevantButtonOriginalColor = R.drawable.green;
+                idOfRelevantButtonLighterColor = R.drawable.lightgreen;
+                break;
+            case R.id.yellowButton:
+                idOfRelevantButtonOriginalColor = R.drawable.yellow;
+                idOfRelevantButtonLighterColor = R.drawable.lightyellow;
+                break;
+            default:
+                Toast toast = Toast.makeText(this,"the button I get is wrong. Please try again.",Toast.LENGTH_SHORT);
+                toast.show();
+                return;
+        }
+
+        relevantButton.setBackgroundResource(idOfRelevantButtonLighterColor);
+        */
 //chagnButtonsClickableState(in boolean state =false): void//?
-        playButton(relevantButton);
+        playButton(relevantButton.getId());
 /*
 if(isGameRuning && comperButtons(relevantButton): boolean){
 prepareTheNextTry(): void
@@ -131,44 +157,35 @@ endGame(): void
 
     }
 
-    private void playButton(Button button) {
+    private void playButton(int buttonId) {
         //https://www.youtube.com/watch?v=whFVhvM-J0U
         MediaPlayer mp = null;
-        int idOfRelevantButtonOriginalColor = 0;
-        int idOfRelevantButtonLighterColor = 0;
-        switch (button.getId()) {
+        switch (buttonId) {
             case R.id.redButton:
-                idOfRelevantButtonOriginalColor = R.drawable.red3;
-                idOfRelevantButtonLighterColor = R.drawable.lightred;
-                mp = MediaPlayer.create(this, R.raw.redbutton);
+                mp = MediaPlayer.create(this, R.raw.redsound);
                 break;
             case R.id.blueButton:
-                idOfRelevantButtonOriginalColor = R.drawable.blue;
-                idOfRelevantButtonLighterColor = R.drawable.lightblue;
-                mp = MediaPlayer.create(this, R.raw.bluebutton);
+                mp = MediaPlayer.create(this, R.raw.bluesound);
                 break;
             case R.id.greenButton:
-                idOfRelevantButtonOriginalColor = R.drawable.green;
-                idOfRelevantButtonLighterColor = R.drawable.lightgreen;
-                mp = MediaPlayer.create(this, R.raw.greenbutton);
+                mp = MediaPlayer.create(this, R.raw.green_sound);
                 break;
             case R.id.yellowButton:
-                idOfRelevantButtonOriginalColor = R.drawable.yellow;
-                idOfRelevantButtonLighterColor = R.drawable.lightyellow;
-                mp = MediaPlayer.create(this, R.raw.yellowbutton);
+                mp = MediaPlayer.create(this, R.raw.yellow_sound);
                 break;
             default:
                 Toast toast = Toast.makeText(this,"the button I get is wrong. Please try again.",Toast.LENGTH_SHORT);
                 toast.show();
                 return;
         }
-        button.setBackgroundResource(idOfRelevantButtonOriginalColor);
+        //new myAsyncTask().execute(mp);
+        //button.setBackgroundResource(idOfRelevantButtonOriginalColor);!!!!!!!
         mp.setVolume(1.0f,1.0f);
         mp.start();
 //busy waiting
         while(mp != null && mp.getCurrentPosition() < mp.getDuration());
         mp.stop();
-        button.setBackgroundResource(idOfRelevantButtonLighterColor);
+        //button.setBackgroundResource(idOfRelevantButtonLighterColor);!!!!!!!
 
     }
 
@@ -207,8 +224,36 @@ chagnButtonsClickableState(in boolean state =true): void
      */
     }
 
+/*private class myAsyncTask extends AsyncTask<MediaPlayer,Intent,Void>{
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+    }
 
+    @Override
+    protected Void doInBackground(MediaPlayer mp) {
+        mp.setVolume(1.0f,1.0f);
+        mp.start();
+//busy waiting
+        while(mp != null && mp.getCurrentPosition() < mp.getDuration());
+        mp.stop();
+        //button.setBackgroundResource(idOfRelevantButtonLighterColor);!!!!!!!
+        //playButton(buttonId);
+        return null;
+    }
 
+    @Override
+    protected void onProgressUpdate(Intent... values) {
+        super.onProgressUpdate(values);
+    }
+
+    @Override
+    protected void onPostExecute(Void aVoid) {
+        button.setBackgroundResource(idOfRelevantButtonOriginalColor);
+        super.onPostExecute(aVoid);
+    }
+}
+*/
 
 
 

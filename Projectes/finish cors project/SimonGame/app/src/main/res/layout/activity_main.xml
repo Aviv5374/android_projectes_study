@@ -28,7 +28,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/red3"
+                android:background="@drawable/red_button_selector"
                 android:onClick="onButtonClick" />
 
             <Button
@@ -36,7 +36,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/blue"
+                android:background="@drawable/blue_button_selector"
                 android:onClick="onButtonClick" />
         </LinearLayout>
 
@@ -53,7 +53,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/green"
+                android:background="@drawable/green_button_selector"
                 android:onClick="onButtonClick" />
 
             <Button
@@ -61,7 +61,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/yellow"
+                android:background="@drawable/yellow_button_selector"
                 android:onClick="onButtonClick" />
         </LinearLayout>
     </LinearLayout>
