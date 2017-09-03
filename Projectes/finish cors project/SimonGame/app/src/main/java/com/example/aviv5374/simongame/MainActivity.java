@@ -53,7 +53,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startGame() {
-        //buttons[0].
+        /*
+        buttons[1].setPressed(true);
+        playButton(buttons[0].getId());
+        buttons[1].setPressed(false);// same problem before the selectors
+        buttons[1].performClick();//tiger without the selector. what i search for without what i need
+        */
         /*
        int counter = 0;
 if(!isGameRuning){
@@ -116,34 +121,7 @@ playButton(Button b=buttonsSequence[i]): void
 
     public void onButtonClick(View v) {
         Button relevantButton = (Button)findViewById(v.getId());
-       /* int idOfRelevantButtonOriginalColor = 0;
-        int idOfRelevantButtonLighterColor = 0;
-        switch (relevantButton.getId()) {
-            case R.id.redButton:
-                idOfRelevantButtonOriginalColor = R.drawable.red3;
-                idOfRelevantButtonLighterColor = R.drawable.lightred;
-                break;
-            case R.id.blueButton:
-                idOfRelevantButtonOriginalColor = R.drawable.blue;
-                idOfRelevantButtonLighterColor = R.drawable.lightblue;
-                break;
-            case R.id.greenButton:
-                idOfRelevantButtonOriginalColor = R.drawable.green;
-                idOfRelevantButtonLighterColor = R.drawable.lightgreen;
-                break;
-            case R.id.yellowButton:
-                idOfRelevantButtonOriginalColor = R.drawable.yellow;
-                idOfRelevantButtonLighterColor = R.drawable.lightyellow;
-                break;
-            default:
-                Toast toast = Toast.makeText(this,"the button I get is wrong. Please try again.",Toast.LENGTH_SHORT);
-                toast.show();
-                return;
-        }
-
-        relevantButton.setBackgroundResource(idOfRelevantButtonLighterColor);
-        */
-//chagnButtonsClickableState(in boolean state =false): void//?
+        chagnButtonsClickableState(false);//?
         playButton(relevantButton.getId());
 /*
 if(isGameRuning && comperButtons(relevantButton): boolean){
@@ -153,10 +131,11 @@ else{
 endGame(): void
 }
 */
-//chagnButtonsClickableState(in boolean state =true): void//?
+       chagnButtonsClickableState(true);//?
 
     }
 
+    //work her is done
     private void playButton(int buttonId) {
         //https://www.youtube.com/watch?v=whFVhvM-J0U
         MediaPlayer mp = null;
@@ -178,15 +157,12 @@ endGame(): void
                 toast.show();
                 return;
         }
-        //new myAsyncTask().execute(mp);
-        //button.setBackgroundResource(idOfRelevantButtonOriginalColor);!!!!!!!
+        //new myAsyncTask().execute(mp);?
         mp.setVolume(1.0f,1.0f);
         mp.start();
-//busy waiting
+        //busy waiting
         while(mp != null && mp.getCurrentPosition() < mp.getDuration());
         mp.stop();
-        //button.setBackgroundResource(idOfRelevantButtonLighterColor);!!!!!!!
-
     }
 
     private boolean comperButtons(Button button) {
