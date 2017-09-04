@@ -4,17 +4,22 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         buttons[1] = (Button) findViewById(R.id.blueButton);
         buttons[2] = (Button) findViewById(R.id.greenButton);
         buttons[3] = (Button) findViewById(R.id.yellowButton);
+
     }
 
     @Override
@@ -56,10 +62,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void startGame() {
         GameManager.getInstance().Test(buttons[1], true);
-        //buttons[1].setPressed(true);
+        buttons[1].setPressed(true);
         playButton(buttons[1].getId());
        // GameManager.getInstance().Test(buttons[1], false);
-        //buttons[1].setPressed(false);// same problem before the selectors
+        buttons[1].setPressed(false);// same problem before the selectors
         //buttons[1].performClick();//tiger without the selector. what i search for without what i need
 
         /*
@@ -127,6 +133,9 @@ playButton(Button b=buttonsSequence[i]): void
         Button relevantButton = (Button)findViewById(v.getId());
         chagnButtonsClickableState(false);//?
         playButton(relevantButton.getId());
+
+
+
 /*
 if(isGameRuning && comperButtons(relevantButton): boolean){
 prepareTheNextTry(): void
@@ -135,7 +144,10 @@ else{
 endGame(): void
 }
 */
-       //chagnButtonsClickableState(true);//?
+
+        //handler.
+        chagnButtonsClickableState(true);//?
+
 
     }
 
@@ -160,13 +172,10 @@ endGame(): void
                 Toast toast = Toast.makeText(this,"the button I get is wrong. Please try again.",Toast.LENGTH_SHORT);
                 toast.show();
                 return;
+
         }
-        //new myAsyncTask().execute(mp);?
         mp.setVolume(1.0f,1.0f);
         mp.start();
-        //busy waiting
-        while(mp != null && mp.getCurrentPosition() < mp.getDuration());
-        mp.stop();
     }
 
     private boolean comperButtons(Button button) {
