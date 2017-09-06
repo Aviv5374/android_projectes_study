@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Button> buttonsSequence;
     private int indexOfRelevantSequenceButton;
     private boolean isGameRunning;
-    private boolean isClickable = true;
 
 
     @Override
@@ -55,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
+    //work here is done
     private void startGame() {
         if (!isGameRunning) {
             buttonsSequence.clear();
@@ -78,10 +77,10 @@ public class MainActivity extends AppCompatActivity {
         changeButtonsClickableState(true);
     }
 
+    //work here is done
     private void changeButtonsClickableState(boolean state) {
         for (int i = 0; i < buttons.length; i++)
             buttons[i].setClickable(state);
-        isClickable = state;
     }
 
     //work here is done
@@ -138,10 +137,11 @@ public class MainActivity extends AppCompatActivity {
         Button relevantButton = (Button) findViewById(v.getId());
         changeButtonsClickableState(false);//?
         playButton(relevantButton.getId());
-        if (isGameRunning && comperButtons(relevantButton)) {
+        //TODO: the is wrong, and i will like to move this code somewere else
+        if (isGameRunning && compareButtons(relevantButton)) {
             prepareTheNextTry();
         } else {
-            Toast toast = Toast.makeText(this, "wrong", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(this, R.string.player_make_mistake_error, Toast.LENGTH_SHORT);
             toast.show();
             endGame();
         }
@@ -180,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
         mp.release();
     }
 
-    private boolean comperButtons(Button button) {
+    private boolean compareButtons(Button button) {
         return buttonsSequence.get(indexOfRelevantSequenceButton).equals(button);
     }
 
