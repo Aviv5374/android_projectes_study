@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
             buttonsSequence.clear();
             indexOfRelevantSequenceButton = 0;
             chagnButtonsClickableState(false);
-            isGameRunמing = true;
+            //isGameRunמing = true;
             manageButtonsSequence();
         } else {
             Toast toast = Toast.makeText(this, "A game is running right now. Please try againe later.", Toast.LENGTH_SHORT);
@@ -82,12 +82,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void manageButtonsSequence() {
         chagnButtonsClickableState(false);//TO CHECK: maybe not relevent
-        Toast toast = Toast.makeText(this, "manageButtonsSequence() start", Toast.LENGTH_SHORT);
-        toast.show();
         addToSequence();
-        //Toast toast2 = Toast.makeText(this, "sequence size" + String.valueOf(buttonsSequence.size()), Toast.LENGTH_SHORT);
-       // toast2.show();
-       // playSequence();
+        playSequence();
         //chagnButtonsClickableState(true);
     }
 
@@ -98,30 +94,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addToSequence() {
-        Toast toast = Toast.makeText(this, "addToSequence() start", Toast.LENGTH_SHORT);
-        toast.show();
         Random rand = new Random();
         int chosenIndex = rand.nextInt(buttons.length);
         if (buttonsSequence.size()>=2 && buttons[chosenIndex] == buttonsSequence.get(buttonsSequence.size() - 1) && buttons[chosenIndex] == buttonsSequence.get(buttonsSequence.size() - 2)) {
             addToSequence();
         } else {
-            String chosenButton = "none";
-            switch (chosenIndex){
-                case 0:
-                    chosenButton = "red button";
-                    break;
-                case 1:
-                    chosenButton = "blue button";
-                    break;
-                case 2:
-                    chosenButton = "green button";
-                    break;
-                case 3:
-                    chosenButton = "yellow button";
-                    break;
-            }
-           Toast toast2 = Toast.makeText(this, "the chosen button is the " + chosenButton, Toast.LENGTH_SHORT);
-            toast2.show();
             buttonsSequence.add(buttons[chosenIndex]);
         }
 
@@ -212,7 +189,7 @@ endGame(): void
         mp.start();
         //// TODO: twice the last two lanes later
         //busy waiting
-        while (mp != null && mp.getCurrentPosition() < mp.getDuration() / 6) ;
+        while (mp != null && mp.getCurrentPosition() < mp.getDuration() / 4) ;
         mp.stop();
     }
 
