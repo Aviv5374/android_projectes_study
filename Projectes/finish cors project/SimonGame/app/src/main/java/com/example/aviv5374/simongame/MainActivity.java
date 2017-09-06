@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean isGameRunמing = false;
     private boolean isClickable = true;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
         buttons[1] = (Button) findViewById(R.id.blueButton);
         buttons[2] = (Button) findViewById(R.id.greenButton);
         buttons[3] = (Button) findViewById(R.id.yellowButton);
-
     }
 
     @Override
@@ -61,45 +63,45 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void startGame() {
-        GameManager.getInstance().Test(buttons[1], true);
-        buttons[1].setPressed(true);
-        playButton(buttons[1].getId());
-       // GameManager.getInstance().Test(buttons[1], false);
-        buttons[1].setPressed(false);// same problem before the selectors
-        //buttons[1].performClick();//tiger without the selector. what i search for without what i need
+        if (!isGameRunמing) {
+            buttonsSequence.clear();
+            indexOfRelevantSequenceButton = 0;
+            chagnButtonsClickableState(false);
+            //count 3 seacnd with toasts?
+           /* new CountDownTimer(1000, 30)//?
+            {
+                int counter = 0;
+                String counterStg;
+                public void onTick(long millisUntilFinished) {
+                    counterStg = String.valueOf(counter);
+                    Tost tost = Toast.makeText(this, counterStg, Toast.LENGTH_SHORT);
+                    toast.show();
+                    counter++;
+                }
 
-        /*
-       int counter = 0;
-if(!isGameRuning){
-buttonsSequence.clear();
-indexOfReleventSequenceButon = 0;
-chagnButtonsClickableState(in boolean state =false): void
-//count 3 seacnd with tosts?
-new CountDownTimer(1000, 30)//?
-{
-public void onTick(long millisUntilFinished){
-Tost tost = Toast.makeText(this,String.valueOf(counter),Toast.LENGTH_SHORT);
-toast.show():
-counter ++;
-}
-}.start();
-isGameRuning = true;
-manageButtonsSequence(): void
-{
-else{
-Tost tost = Toast.makeText(this,"A game is runing right now. Please try againe later.",Toast.LENGTH_SHORT);
-toast.show():
-}
-         */
+                @Override
+                public void onFinish() {
+
+                }
+            }.start();*/
+            isGameRunמing = true;
+            manageButtonsSequence();
+        } else {
+
+            Toast toast = Toast.makeText(this, "A game is runing right now. Please try againe later.", Toast.LENGTH_SHORT);
+            toast.show();
+        }
+
     }
 
+
     private void manageButtonsSequence() {
-        /*
-        chagnButtonsClickableState(in boolean state =false): void//TO CHECK: maybe not relevent
-addToSequencen(): void
-playSequence(): void
-chagnButtonsClickableState(in boolean state =true): void
-         */
+        chagnButtonsClickableState(false);//TO CHECK: maybe not relevent
+        Toast toast = Toast.makeText(this, "manageButtonsSequence() start", Toast.LENGTH_SHORT);
+        toast.show();
+        //addToSequencen();
+        //playSequence();
+        chagnButtonsClickableState(true);
     }
 
     private void chagnButtonsClickableState(boolean state) {
@@ -122,15 +124,45 @@ buttonsSequence.Add(buttons[chosenIndex);
     }
 
     private void playSequence() {
-    /*
-    for(buttonsSequence.Count){
-playButton(Button b=buttonsSequence[i]): void
-}
-     */
+        Toast toast;
+        for (int i = 0; i < buttonsSequence.size(); i++) {
+            switch (buttonsSequence.get(i).getId()) {
+                case R.id.redButton:
+                    toast = Toast.makeText(this, "red button", Toast.LENGTH_SHORT);
+                    toast.show();
+                    break;
+                case R.id.blueButton:
+                    toast = Toast.makeText(this, "blue button", Toast.LENGTH_SHORT);
+                    toast.show();
+                    break;
+                case R.id.greenButton:
+                    toast = Toast.makeText(this, "green button", Toast.LENGTH_SHORT);
+                    toast.show();
+                    break;
+                case R.id.yellowButton:
+                    toast = Toast.makeText(this, "yellow button", Toast.LENGTH_SHORT);
+                    toast.show();
+                    break;
+                default:
+                    toast = Toast.makeText(this, "the button I get is wrong. Please try again.", Toast.LENGTH_SHORT);
+                    toast.show();
+                    return;
+            }
+
+            /*
+            buttonsSequence.get(i).setPressed(true);
+            buttonsSequence.get(i).invalidate();
+            */
+            playButton(buttonsSequence.get(i).getId());
+            /*
+            buttonsSequence.get(i).setPressed(false);
+            buttonsSequence.get(i).invalidate();
+            */
+        }
     }
 
     public void onButtonClick(View v) {
-        Button relevantButton = (Button)findViewById(v.getId());
+        Button relevantButton = (Button) findViewById(v.getId());
         chagnButtonsClickableState(false);//?
         playButton(relevantButton.getId());
 
@@ -151,7 +183,7 @@ endGame(): void
 
     }
 
-    //work her is done
+    //work here is done
     private void playButton(int buttonId) {
         //https://www.youtube.com/watch?v=whFVhvM-J0U
         MediaPlayer mp = null;
@@ -169,13 +201,17 @@ endGame(): void
                 mp = MediaPlayer.create(this, R.raw.yellow_sound);
                 break;
             default:
-                Toast toast = Toast.makeText(this,"the button I get is wrong. Please try again.",Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(this, "the button I get is wrong. Please try again.", Toast.LENGTH_SHORT);
                 toast.show();
                 return;
 
         }
-        mp.setVolume(1.0f,1.0f);
+        mp.setVolume(1.0f, 1.0f);
         mp.start();
+        //// TODO: twice the last two lanes later
+        //busy waiting
+        while (mp != null && mp.getCurrentPosition() < mp.getDuration() / 6) ;
+        mp.stop();
     }
 
     private boolean comperButtons(Button button) {
@@ -212,38 +248,5 @@ isGameRuning = false;
 chagnButtonsClickableState(in boolean state =true): void
      */
     }
-
-/*private class myAsyncTask extends AsyncTask<MediaPlayer,Intent,Void>{
-    @Override
-    protected void onPreExecute() {
-        super.onPreExecute();
-    }
-
-    @Override
-    protected Void doInBackground(MediaPlayer mp) {
-        mp.setVolume(1.0f,1.0f);
-        mp.start();
-//busy waiting
-        while(mp != null && mp.getCurrentPosition() < mp.getDuration());
-        mp.stop();
-        //button.setBackgroundResource(idOfRelevantButtonLighterColor);!!!!!!!
-        //playButton(buttonId);
-        return null;
-    }
-
-    @Override
-    protected void onProgressUpdate(Intent... values) {
-        super.onProgressUpdate(values);
-    }
-
-    @Override
-    protected void onPostExecute(Void aVoid) {
-        button.setBackgroundResource(idOfRelevantButtonOriginalColor);
-        super.onPostExecute(aVoid);
-    }
-}
-*/
-
-
 
 }
