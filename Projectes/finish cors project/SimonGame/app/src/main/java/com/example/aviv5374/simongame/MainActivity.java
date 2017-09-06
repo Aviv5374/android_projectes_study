@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -88,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
             manageButtonsSequence();
         } else {
 
-            Toast toast = Toast.makeText(this, "A game is runing right now. Please try againe later.", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(this, "A game is running right now. Please try againe later.", Toast.LENGTH_SHORT);
             toast.show();
         }
 
@@ -99,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
         chagnButtonsClickableState(false);//TO CHECK: maybe not relevent
         Toast toast = Toast.makeText(this, "manageButtonsSequence() start", Toast.LENGTH_SHORT);
         toast.show();
-        //addToSequencen();
+        //addToSequence();
         //playSequence();
         chagnButtonsClickableState(true);
     }
@@ -110,17 +111,15 @@ public class MainActivity extends AppCompatActivity {
         isClickable = state;
     }
 
-    private void addToSequencen() {
-        /*
+    private void addToSequence() {
         Random rand = new Random();
-int chosenIndex = rand.nextInt(buttons.legth);
-if(buttons[chosenIndex] == buttonsSequence[buttonsSequence.count-1] && buttons[chosenIndex] == buttonsSequence[buttonsSequence.count-2]){
-addToSequencen(): void
-{
- else{
-buttonsSequence.Add(buttons[chosenIndex);
-}
-         */
+        int chosenIndex = rand.nextInt(buttons.length);
+        if (buttons[chosenIndex] == buttonsSequence.get(buttonsSequence.size() - 1) && buttons[chosenIndex] == buttonsSequence.get(buttonsSequence.size() - 2)) {
+            addToSequence();
+        } else {
+            buttonsSequence.add(buttons[chosenIndex]);
+        }
+
     }
 
     private void playSequence() {
@@ -176,8 +175,6 @@ else{
 endGame(): void
 }
 */
-
-        //handler.
         chagnButtonsClickableState(true);//?
 
 
@@ -215,38 +212,32 @@ endGame(): void
     }
 
     private boolean comperButtons(Button button) {
-    /*
-    return buttonsSequence[indexOfReleventSequenceButon].equles(b);
-     */
+        return buttonsSequence[indexOfReleventSequenceButon].equles(b);
         return true;
     }
 
     private void prepareTheNextTry() {
-    /*
-    indexOfReleventSequenceButon++
-if(indexOfReleventSequenceButon >= buttonsSequence.count ){
-if(buttonsSequence.count < 16){
-indexOfReleventSequenceButon = 0;
-manageButtonsSequence(): void
-}
-else{
-endGame(): void
-}
-}
-//?
-else{
-chagnButtonsClickableState(in boolean state =true): void
-}
-     */
+        indexOfRelevantSequenceButton++;
+        if (indexOfRelevantSequenceButton >= buttonsSequence.size()) {
+            if (buttonsSequence.count < 16) {
+                indexOfRelevantSequenceButton = 0;
+                manageButtonsSequence();
+            } else {
+                endGame();
+            }
+        }
+        //?
+        else {
+            chagnButtonsClickableState(true);
+        }
     }
 
     private void endGame() {
-    /*
-    Tost tost = Toast.makeText(this,String.valueOf(buttonsSequence.count),Toast.LENGTH_SHORT);
-toast.show();
-isGameRuning = false;
-chagnButtonsClickableState(in boolean state =true): void
-     */
+        Toast tost = Toast.makeText(this, String.valueOf(buttonsSequence.size()), Toast.LENGTH_SHORT);
+        toast.show();
+        isGameRunמing = false;
+        chagnButtonsClickableState(true);
+
     }
 
 }
