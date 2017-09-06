@@ -102,11 +102,26 @@ public class MainActivity extends AppCompatActivity {
         toast.show();
         Random rand = new Random();
         int chosenIndex = rand.nextInt(buttons.length);
-        if (buttons[chosenIndex] == buttonsSequence.get(buttonsSequence.size() - 1) && buttons[chosenIndex] == buttonsSequence.get(buttonsSequence.size() - 2)) {
+        if (buttonsSequence.size()>=2 && buttons[chosenIndex] == buttonsSequence.get(buttonsSequence.size() - 1) && buttons[chosenIndex] == buttonsSequence.get(buttonsSequence.size() - 2)) {
             addToSequence();
         } else {
-           //Toast toast2 = Toast.makeText(this, "chosen button"+buttons[chosenIndex].toString(), Toast.LENGTH_SHORT);
-            //toast2.show();
+            String chosenButton = "none";
+            switch (chosenIndex){
+                case 0:
+                    chosenButton = "red button";
+                    break;
+                case 1:
+                    chosenButton = "blue button";
+                    break;
+                case 2:
+                    chosenButton = "green button";
+                    break;
+                case 3:
+                    chosenButton = "yellow button";
+                    break;
+            }
+           Toast toast2 = Toast.makeText(this, "the chosen button is the " + chosenButton, Toast.LENGTH_SHORT);
+            toast2.show();
             buttonsSequence.add(buttons[chosenIndex]);
         }
 
