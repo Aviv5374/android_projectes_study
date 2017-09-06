@@ -9,11 +9,20 @@
     tools:layout_editor_absoluteY="8dp">
 
     <LinearLayout
-        android:id="@+id/gameButtonsLayuot"
+        android:id="@+id/gameLayuot"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:weightSum="2">
+        android:weightSum="3">
+
+        <TextView
+            android:id="@+id/buttonsDisplayTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Welcome"
+            android:textColor="@color/White"
+            android:textSize="36sp" />
 
         <LinearLayout
             android:id="@+id/topButtonsLayout"

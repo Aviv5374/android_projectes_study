@@ -1,36 +1,24 @@
 package com.example.aviv5374.simongame;
 
-import android.content.Intent;
-import android.graphics.Color;
 import android.media.MediaPlayer;
-import android.os.AsyncTask;
-import android.os.CountDownTimer;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button[] buttons = new Button[4];
     private ArrayList<Button> buttonsSequence = new ArrayList<Button>();
     private int indexOfRelevantSequenceButton = 0;
-    private boolean isGameRunמing = false;
+    private boolean isGameRunning = false;
     private boolean isClickable = true;
 
 
@@ -66,14 +54,14 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void startGame() {
-        if (!isGameRunמing) {
+        if (!isGameRunning) {
             buttonsSequence.clear();
             indexOfRelevantSequenceButton = 0;
             chagnButtonsClickableState(false);
-            //isGameRunמing = true;
+            //isGameRunning = true;
             manageButtonsSequence();
         } else {
-            Toast toast = Toast.makeText(this, "A game is running right now. Please try againe later.", Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(this, R.string.game_is_running_error_text, Toast.LENGTH_SHORT);
             toast.show();
         }
 
@@ -82,8 +70,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void manageButtonsSequence() {
         chagnButtonsClickableState(false);//TO CHECK: maybe not relevent
-        addToSequence();
-        playSequence();
+        for (int i =0; i<4; i++) {
+            addToSequence();
+            playSequence();
+        }
         //chagnButtonsClickableState(true);
     }
 
@@ -147,8 +137,6 @@ public class MainActivity extends AppCompatActivity {
         chagnButtonsClickableState(false);//?
         playButton(relevantButton.getId());
 
-
-
 /*
 if(isGameRuning && comperButtons(relevantButton): boolean){
 prepareTheNextTry(): void
@@ -168,10 +156,10 @@ endGame(): void
         MediaPlayer mp = null;
         switch (buttonId) {
             case R.id.redButton:
-                mp = MediaPlayer.create(this, R.raw.redsound);
+                mp = MediaPlayer.create(this, R.raw.red_sound);
                 break;
             case R.id.blueButton:
-                mp = MediaPlayer.create(this, R.raw.bluesound);
+                mp = MediaPlayer.create(this, R.raw.blue_sound);
                 break;
             case R.id.greenButton:
                 mp = MediaPlayer.create(this, R.raw.green_sound);
@@ -216,7 +204,7 @@ endGame(): void
     private void endGame() {
         Toast toast = Toast.makeText(this, String.valueOf(buttonsSequence.size()), Toast.LENGTH_SHORT);
         toast.show();
-        isGameRunמing = false;
+        isGameRunning = false;
         chagnButtonsClickableState(true);
 
     }

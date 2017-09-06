@@ -2,4 +2,8 @@
     <string name="app_name">SimonGame</string>
     <string name="start_game_text">Start A New Game</string>
     <string name="game_is_running_error_text">A game is running right now. Please try again later</string>
+    <string name="red_button">Red Button</string>
+    <string name="blue_button">Blue Button</string>
+    <string name="green_button">Green Button</string>
+    <string name="yellow_button">yellow Button</string>
 </resources>
