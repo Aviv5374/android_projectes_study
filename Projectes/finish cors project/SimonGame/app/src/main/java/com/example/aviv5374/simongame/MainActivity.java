@@ -8,6 +8,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -16,9 +17,9 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
     private Button[] buttons = new Button[4];
-    private ArrayList<Button> buttonsSequence = new ArrayList<Button>();
-    private int indexOfRelevantSequenceButton = 0;
-    private boolean isGameRunning = false;
+    private ArrayList<Button> buttonsSequence;
+    private int indexOfRelevantSequenceButton;
+    private boolean isGameRunning;
     private boolean isClickable = true;
 
 
@@ -30,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
         buttons[1] = (Button) findViewById(R.id.blueButton);
         buttons[2] = (Button) findViewById(R.id.greenButton);
         buttons[3] = (Button) findViewById(R.id.yellowButton);
+        buttonsSequence = new ArrayList<Button>();
+        indexOfRelevantSequenceButton = 0;
+        isGameRunning = false;
 
     }
 
@@ -70,10 +74,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void manageButtonsSequence() {
         chagnButtonsClickableState(false);//TO CHECK: maybe not relevent
-        for (int i =0; i<4; i++) {
+        for (int i =0; i<5; i++) {
             addToSequence();
-            playSequence();
         }
+        playSequence();
         //chagnButtonsClickableState(true);
     }
 
@@ -99,23 +103,23 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < buttonsSequence.size(); i++) {
             switch (buttonsSequence.get(i).getId()) {
                 case R.id.redButton:
-                    toast = Toast.makeText(this, "red button", Toast.LENGTH_SHORT);
+                    toast = Toast.makeText(this, R.string.red_button, Toast.LENGTH_SHORT);
                     toast.show();
                     break;
                 case R.id.blueButton:
-                    toast = Toast.makeText(this, "blue button", Toast.LENGTH_SHORT);
+                    toast = Toast.makeText(this, R.string.blue_button, Toast.LENGTH_SHORT);
                     toast.show();
                     break;
                 case R.id.greenButton:
-                    toast = Toast.makeText(this, "green button", Toast.LENGTH_SHORT);
+                    toast = Toast.makeText(this, R.string.green_button, Toast.LENGTH_SHORT);
                     toast.show();
                     break;
                 case R.id.yellowButton:
-                    toast = Toast.makeText(this, "yellow button", Toast.LENGTH_SHORT);
+                    toast = Toast.makeText(this, R.string.yellow_button, Toast.LENGTH_SHORT);
                     toast.show();
                     break;
                 default:
-                    toast = Toast.makeText(this, "the button I get is wrong. Please try again.", Toast.LENGTH_SHORT);
+                    toast = Toast.makeText(this, "the button I get is wrong. Please try again", Toast.LENGTH_SHORT);
                     toast.show();
                     return;
             }
@@ -156,10 +160,10 @@ endGame(): void
         MediaPlayer mp = null;
         switch (buttonId) {
             case R.id.redButton:
-                mp = MediaPlayer.create(this, R.raw.red_sound);
+                mp = MediaPlayer.create(this, R.raw.redsound);
                 break;
             case R.id.blueButton:
-                mp = MediaPlayer.create(this, R.raw.blue_sound);
+                mp = MediaPlayer.create(this, R.raw.bluesound);
                 break;
             case R.id.greenButton:
                 mp = MediaPlayer.create(this, R.raw.green_sound);
