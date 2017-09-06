@@ -8,7 +8,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -61,8 +60,8 @@ public class MainActivity extends AppCompatActivity {
         if (!isGameRunning) {
             buttonsSequence.clear();
             indexOfRelevantSequenceButton = 0;
-            chagnButtonsClickableState(false);
-            //isGameRunning = true;
+            changeButtonsClickableState(false);
+            isGameRunning = true;
             manageButtonsSequence();
         } else {
             Toast toast = Toast.makeText(this, R.string.game_is_running_error_text, Toast.LENGTH_SHORT);
@@ -71,33 +70,32 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
+    //work here is done
     private void manageButtonsSequence() {
-        chagnButtonsClickableState(false);//TO CHECK: maybe not relevent
-        for (int i =0; i<5; i++) {
-            addToSequence();
-        }
+        changeButtonsClickableState(false);//TO CHECK: maybe not relevent
+        addToSequence();
         playSequence();
-        //chagnButtonsClickableState(true);
+        changeButtonsClickableState(true);
     }
 
-    private void chagnButtonsClickableState(boolean state) {
+    private void changeButtonsClickableState(boolean state) {
         for (int i = 0; i < buttons.length; i++)
             buttons[i].setClickable(state);
         isClickable = state;
     }
 
+    //work here is done
     private void addToSequence() {
         Random rand = new Random();
         int chosenIndex = rand.nextInt(buttons.length);
-        if (buttonsSequence.size()>=2 && buttons[chosenIndex] == buttonsSequence.get(buttonsSequence.size() - 1) && buttons[chosenIndex] == buttonsSequence.get(buttonsSequence.size() - 2)) {
+        if (buttonsSequence.size() >= 2 && buttons[chosenIndex] == buttonsSequence.get(buttonsSequence.size() - 1) && buttons[chosenIndex] == buttonsSequence.get(buttonsSequence.size() - 2)) {
             addToSequence();
         } else {
             buttonsSequence.add(buttons[chosenIndex]);
         }
-
     }
 
+    //work here is done
     private void playSequence() {
         Toast toast;
         for (int i = 0; i < buttonsSequence.size(); i++) {
@@ -138,20 +136,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void onButtonClick(View v) {
         Button relevantButton = (Button) findViewById(v.getId());
-        chagnButtonsClickableState(false);//?
+        changeButtonsClickableState(false);//?
         playButton(relevantButton.getId());
-
-/*
-if(isGameRuning && comperButtons(relevantButton): boolean){
-prepareTheNextTry(): void
-}
-else{
-endGame(): void
-}
-*/
-        chagnButtonsClickableState(true);//?
-
-
+        if (isGameRunning && comperButtons(relevantButton)) {
+            prepareTheNextTry();
+        } else {
+            Toast toast = Toast.makeText(this, "wrong", Toast.LENGTH_SHORT);
+            toast.show();
+            endGame();
+        }
+        changeButtonsClickableState(true);//?
     }
 
     //work here is done
@@ -181,8 +175,9 @@ endGame(): void
         mp.start();
         //// TODO: twice the last two lanes later
         //busy waiting
-        while (mp != null && mp.getCurrentPosition() < mp.getDuration() / 4) ;
+        while (mp != null && mp.getCurrentPosition() < mp.getDuration() / 6) ;
         mp.stop();
+        mp.release();
     }
 
     private boolean comperButtons(Button button) {
@@ -201,7 +196,7 @@ endGame(): void
         }
         //?
         else {
-            chagnButtonsClickableState(true);
+            changeButtonsClickableState(true);
         }
     }
 
@@ -209,7 +204,7 @@ endGame(): void
         Toast toast = Toast.makeText(this, String.valueOf(buttonsSequence.size()), Toast.LENGTH_SHORT);
         toast.show();
         isGameRunning = false;
-        chagnButtonsClickableState(true);
+        changeButtonsClickableState(true);
 
     }
 

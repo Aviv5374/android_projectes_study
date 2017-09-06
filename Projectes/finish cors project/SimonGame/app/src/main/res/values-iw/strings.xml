@@ -7,4 +7,5 @@
     <string name="blue_button">כפתור כחול</string>
     <string name="green_button">כפתור ירוק</string>
     <string name="yellow_button">כפתור צהוב</string>
+    <string name="player_make_mistake_error">טעות, הפסדת</string>
 </resources>
