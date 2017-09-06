@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         buttons[1] = (Button) findViewById(R.id.blueButton);
         buttons[2] = (Button) findViewById(R.id.greenButton);
         buttons[3] = (Button) findViewById(R.id.yellowButton);
+
     }
 
     @Override
@@ -68,27 +70,9 @@ public class MainActivity extends AppCompatActivity {
             buttonsSequence.clear();
             indexOfRelevantSequenceButton = 0;
             chagnButtonsClickableState(false);
-            //count 3 seacnd with toasts?
-           /* new CountDownTimer(1000, 30)//?
-            {
-                int counter = 0;
-                String counterStg;
-                public void onTick(long millisUntilFinished) {
-                    counterStg = String.valueOf(counter);
-                    Tost tost = Toast.makeText(this, counterStg, Toast.LENGTH_SHORT);
-                    toast.show();
-                    counter++;
-                }
-
-                @Override
-                public void onFinish() {
-
-                }
-            }.start();*/
             isGameRunמing = true;
             manageButtonsSequence();
         } else {
-
             Toast toast = Toast.makeText(this, "A game is running right now. Please try againe later.", Toast.LENGTH_SHORT);
             toast.show();
         }
@@ -100,9 +84,11 @@ public class MainActivity extends AppCompatActivity {
         chagnButtonsClickableState(false);//TO CHECK: maybe not relevent
         Toast toast = Toast.makeText(this, "manageButtonsSequence() start", Toast.LENGTH_SHORT);
         toast.show();
-        //addToSequence();
-        //playSequence();
-        chagnButtonsClickableState(true);
+        addToSequence();
+        //Toast toast2 = Toast.makeText(this, "sequence size" + String.valueOf(buttonsSequence.size()), Toast.LENGTH_SHORT);
+       // toast2.show();
+       // playSequence();
+        //chagnButtonsClickableState(true);
     }
 
     private void chagnButtonsClickableState(boolean state) {
@@ -112,11 +98,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addToSequence() {
+        Toast toast = Toast.makeText(this, "addToSequence() start", Toast.LENGTH_SHORT);
+        toast.show();
         Random rand = new Random();
         int chosenIndex = rand.nextInt(buttons.length);
         if (buttons[chosenIndex] == buttonsSequence.get(buttonsSequence.size() - 1) && buttons[chosenIndex] == buttonsSequence.get(buttonsSequence.size() - 2)) {
             addToSequence();
         } else {
+           //Toast toast2 = Toast.makeText(this, "chosen button"+buttons[chosenIndex].toString(), Toast.LENGTH_SHORT);
+            //toast2.show();
             buttonsSequence.add(buttons[chosenIndex]);
         }
 
@@ -212,14 +202,13 @@ endGame(): void
     }
 
     private boolean comperButtons(Button button) {
-        return buttonsSequence[indexOfReleventSequenceButon].equles(b);
-        return true;
+        return buttonsSequence.get(indexOfRelevantSequenceButton).equals(button);
     }
 
     private void prepareTheNextTry() {
         indexOfRelevantSequenceButton++;
         if (indexOfRelevantSequenceButton >= buttonsSequence.size()) {
-            if (buttonsSequence.count < 16) {
+            if (buttonsSequence.size() < 16) {
                 indexOfRelevantSequenceButton = 0;
                 manageButtonsSequence();
             } else {
@@ -233,7 +222,7 @@ endGame(): void
     }
 
     private void endGame() {
-        Toast tost = Toast.makeText(this, String.valueOf(buttonsSequence.size()), Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(this, String.valueOf(buttonsSequence.size()), Toast.LENGTH_SHORT);
         toast.show();
         isGameRunמing = false;
         chagnButtonsClickableState(true);
