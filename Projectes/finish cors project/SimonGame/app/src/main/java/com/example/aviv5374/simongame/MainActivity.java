@@ -179,11 +179,12 @@ public class MainActivity extends AppCompatActivity {
         if (buttonsSequence.get(indexOfRelevantSequenceButton).equals(button)){
             Toast toast = Toast.makeText(this, R.string.player_copy_the_Sequence_right, Toast.LENGTH_SHORT);
             toast.show();
-           // prepareTheNextTry();
+            //TODO: put that motode some were else
+            prepareTheNextTry();
         } else {
             Toast toast = Toast.makeText(this, R.string.player_make_mistake_error, Toast.LENGTH_SHORT);
             toast.show();
-           // endGame();
+            endGame();
         }
     }
 
@@ -191,6 +192,7 @@ public class MainActivity extends AppCompatActivity {
         indexOfRelevantSequenceButton++;
         if (indexOfRelevantSequenceButton >= buttonsSequence.size()) {
             if (buttonsSequence.size() < 16) {
+                //TODO: test this part!!!!
                 indexOfRelevantSequenceButton = 0;
                 manageButtonsSequence();
             } else {
