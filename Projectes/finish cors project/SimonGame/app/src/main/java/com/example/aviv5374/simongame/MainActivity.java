@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Button> buttonsSequence;
     private int indexOfRelevantSequenceButton;
     private boolean isGameRunning;
-
+    private int text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
