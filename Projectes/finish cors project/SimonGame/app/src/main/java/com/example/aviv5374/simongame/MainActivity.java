@@ -137,13 +137,8 @@ public class MainActivity extends AppCompatActivity {
         Button relevantButton = (Button) findViewById(v.getId());
         changeButtonsClickableState(false);//?
         playButton(relevantButton.getId());
-        //TODO: the is wrong, and i will like to move this code somewere else
-        if (isGameRunning && compareButtons(relevantButton)) {
-            prepareTheNextTry();
-        } else {
-            Toast toast = Toast.makeText(this, R.string.player_make_mistake_error, Toast.LENGTH_SHORT);
-            toast.show();
-            endGame();
+        if (isGameRunning) {
+            compareButtons(relevantButton);
         }
         changeButtonsClickableState(true);//?
     }
@@ -180,8 +175,16 @@ public class MainActivity extends AppCompatActivity {
         mp.release();
     }
 
-    private boolean compareButtons(Button button) {
-        return buttonsSequence.get(indexOfRelevantSequenceButton).equals(button);
+    private void compareButtons(Button button) {
+        if (buttonsSequence.get(indexOfRelevantSequenceButton).equals(button)){
+            Toast toast = Toast.makeText(this, R.string.player_copy_the_Sequence_right, Toast.LENGTH_SHORT);
+            toast.show();
+           // prepareTheNextTry();
+        } else {
+            Toast toast = Toast.makeText(this, R.string.player_make_mistake_error, Toast.LENGTH_SHORT);
+            toast.show();
+           // endGame();
+        }
     }
 
     private void prepareTheNextTry() {
