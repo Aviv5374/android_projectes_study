@@ -125,9 +125,9 @@ public class MainActivity extends AppCompatActivity {
             }
 
             /*
-            //!!! the original code to change background to relevant state for each button!!!
-            //!!! after a lot of effort i did manage to make that work!!!
-            //!!! the toats here is a compromise!!!!
+            //!!! the original code to change background to relevant state for each button !!!
+            //!!! after a lot of effort i did manage to make that work !!!
+            //!!! the toats here is a compromise !!!
             buttonsSequence.get(i).setPressed(true);
             buttonsSequence.get(i).invalidate();
             */
@@ -136,9 +136,9 @@ public class MainActivity extends AppCompatActivity {
             playButton(buttonsSequence.get(i).getId());
 
             /*
-            //!!! the original code to change background to relevant state for each button!!!
-            //!!! after a lot of effort i did manage to make that work!!!
-            //!!! the toats here is a compromise!!!!
+            //!!! the original code to change background to relevant state for each button !!!
+            //!!! after a lot of effort i did manage to make that work !!!
+            //!!! the toats here is a compromise !!!
             buttonsSequence.get(i).setPressed(false);
             buttonsSequence.get(i).invalidate();
             */
@@ -147,16 +147,18 @@ public class MainActivity extends AppCompatActivity {
 
     public void onButtonClick(View v) {
         Button relevantButton = (Button) findViewById(v.getId());
+        //play the relevant sound for this button
         playButton(relevantButton.getId());
         if (isGameRunning) {
+            //compare this button to the relevant button on the sequence
             compareButtons(relevantButton);
         }
     }
 
-    //work here is done
+    ////play the relevant sound of a button
     private void playButton(int buttonId) {
-        //https://www.youtube.com/watch?v=whFVhvM-J0U
         MediaPlayer mp = null;
+        //set the relevant sound for the given button id
         switch (buttonId) {
             case R.id.redButton:
                 mp = MediaPlayer.create(this, R.raw.redsound);
@@ -178,13 +180,13 @@ public class MainActivity extends AppCompatActivity {
         }
         mp.setVolume(1.0f, 1.0f);
         mp.start();
-        //// TODO: twice the last two lanes later
         //busy waiting
         while (mp != null && mp.getCurrentPosition() < mp.getDuration() / 6) ;
         mp.stop();
         mp.release();
     }
 
+    //compare button given to the relevant button on the sequence
     private void compareButtons(Button button) {
         if (buttonsSequence.get(indexOfRelevantSequenceButton).equals(button)){
             triesCounter ++;
@@ -205,8 +207,8 @@ public class MainActivity extends AppCompatActivity {
         indexOfRelevantSequenceButton++;
         if (indexOfRelevantSequenceButton >= buttonsSequence.size()) {
             if (buttonsSequence.size() < 16) {
-                //TODO: test this part!!!!
                 indexOfRelevantSequenceButton = 0;
+                //start the next sequence
                 manageButtonsSequence();
             } else {
                 Toast toast = Toast.makeText(this, R.string.end_game, Toast.LENGTH_SHORT);
