@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //work here is done
+    //setup the relevant verbals and start a new game
     private void startGame() {
         if (!isGameRunning) {
             buttonsSequence.clear();
@@ -70,24 +70,25 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    //work here is done
+    //add a new random button to the sequence and play it
     private void manageButtonsSequence() {
-        changeButtonsClickableState(false);//TO CHECK: maybe not relevent
+        changeButtonsClickableState(false);
         addToSequence();
         playSequence();
         changeButtonsClickableState(true);
     }
 
-    //work here is done
+    //change the cliclable state of the buttons in the array by state given
     private void changeButtonsClickableState(boolean state) {
         for (int i = 0; i < buttons.length; i++)
             buttons[i].setClickable(state);
     }
 
-    //work here is done
+    //dd a new random button to the sequence
     private void addToSequence() {
         Random rand = new Random();
         int chosenIndex = rand.nextInt(buttons.length);
+        //if the chosen button is the same as the two before it, restart the method and chose a new button
         if (buttonsSequence.size() >= 2 && buttons[chosenIndex] == buttonsSequence.get(buttonsSequence.size() - 1) && buttons[chosenIndex] == buttonsSequence.get(buttonsSequence.size() - 2)) {
             addToSequence();
         } else {
@@ -95,10 +96,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //work here is done
+    //play the the button sequence
     private void playSequence() {
         Toast toast;
         for (int i = 0; i < buttonsSequence.size(); i++) {
+            //show a toast with the relevant button name
             switch (buttonsSequence.get(i).getId()) {
                 case R.id.redButton:
                     toast = Toast.makeText(this, R.string.red_button, Toast.LENGTH_SHORT);
@@ -123,11 +125,20 @@ public class MainActivity extends AppCompatActivity {
             }
 
             /*
+            //!!! the original code to change background to relevant state for each button!!!
+            //!!! after a lot of effort i did manage to make that work!!!
+            //!!! the toats here is a compromise!!!!
             buttonsSequence.get(i).setPressed(true);
             buttonsSequence.get(i).invalidate();
             */
+
+            //play the relevant sound for each button
             playButton(buttonsSequence.get(i).getId());
+
             /*
+            //!!! the original code to change background to relevant state for each button!!!
+            //!!! after a lot of effort i did manage to make that work!!!
+            //!!! the toats here is a compromise!!!!
             buttonsSequence.get(i).setPressed(false);
             buttonsSequence.get(i).invalidate();
             */
@@ -136,12 +147,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void onButtonClick(View v) {
         Button relevantButton = (Button) findViewById(v.getId());
-        changeButtonsClickableState(false);//?
         playButton(relevantButton.getId());
         if (isGameRunning) {
             compareButtons(relevantButton);
         }
-        changeButtonsClickableState(true);//?
     }
 
     //work here is done
@@ -204,10 +213,6 @@ public class MainActivity extends AppCompatActivity {
                 toast.show();
                 endGame();
             }
-        }
-        //?
-        else {
-            changeButtonsClickableState(true);
         }
     }
 
