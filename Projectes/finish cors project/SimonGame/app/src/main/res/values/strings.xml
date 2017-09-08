@@ -8,4 +8,5 @@
     <string name="yellow_button">yellow Button</string>
     <string name="player_make_mistake_error">Wrong, you lost</string>
     <string name="player_copy_the_Sequence_right">Congratulation , you are right</string>
+    <string name="end_game">Congratulation , you won</string>
 </resources>

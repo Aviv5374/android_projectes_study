@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<Button> buttonsSequence;
     private int indexOfRelevantSequenceButton;
     private boolean isGameRunning;
-    private int text;
+    private int triesCounter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         buttonsSequence = new ArrayList<Button>();
         indexOfRelevantSequenceButton = 0;
         isGameRunning = false;
+        triesCounter =0;
 
     }
 
@@ -177,9 +178,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void compareButtons(Button button) {
         if (buttonsSequence.get(indexOfRelevantSequenceButton).equals(button)){
-            Toast toast = Toast.makeText(this, R.string.player_copy_the_Sequence_right, Toast.LENGTH_SHORT);
-            toast.show();
-            //TODO: put that motode some were else
+            triesCounter ++;
+            if(triesCounter >= buttonsSequence.size()) {
+                Toast toast = Toast.makeText(this, R.string.player_copy_the_Sequence_right, Toast.LENGTH_SHORT);
+                toast.show();
+                triesCounter = 0;
+            }
             prepareTheNextTry();
         } else {
             Toast toast = Toast.makeText(this, R.string.player_make_mistake_error, Toast.LENGTH_SHORT);
@@ -196,6 +200,8 @@ public class MainActivity extends AppCompatActivity {
                 indexOfRelevantSequenceButton = 0;
                 manageButtonsSequence();
             } else {
+                Toast toast = Toast.makeText(this, R.string.end_game, Toast.LENGTH_SHORT);
+                toast.show();
                 endGame();
             }
         }

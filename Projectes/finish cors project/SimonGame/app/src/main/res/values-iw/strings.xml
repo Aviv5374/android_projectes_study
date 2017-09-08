@@ -9,4 +9,5 @@
     <string name="yellow_button">כפתור צהוב</string>
     <string name="player_make_mistake_error">טעות, הפסדת</string>
     <string name="player_copy_the_Sequence_right">ברכות, הצלחת</string>
+    <string name="end_game">ברכות, ניצחת</string>
 </resources>
